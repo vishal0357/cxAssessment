@@ -1,0 +1,92 @@
+.form-label {
+    top: 10px;
+    position: relative;
+    left: 20px;
+    background-color: white;
+}
+
+.form-element {
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 7px;
+    border: 1px solid;
+}
+
+.form-element:focus {
+    border: 1px solid #1976d2;
+    border-radius: 10px;
+}
+
+.option {
+    height: 50px !important;
+    width: 200px !important;
+}
+.margin-10 {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.required {
+    color: red;
+}
+
+.search-btn {
+    border: 0px solid;
+    margin-left: 10px;
+    height: 40px;
+    border-radius: 10px;
+    background: #2dbd2be8;
+    cursor: pointer;
+    flex-grow: 1;
+    min-width: 270px;
+}
+
+.submit-btn {
+    border: 0px solid;
+    margin-left: 10px;
+    height: 40px;
+    border-radius: 10px;
+    background: #2dbd2be8;
+    cursor: pointer;
+    min-width: 270px;
+}
+
+.filter-apply-btn {
+    border: 0px solid;
+    margin-left: 10px;
+    height: 40px;
+    border-radius: 10px;
+    background: #1976d2;
+    cursor: pointer;
+    flex-grow: 1;
+    min-width: 170px;
+}
+
+.filter-apply-btn:hover {
+    background: #63a5e7;
+}
+
+.filter-reset-btn {
+    border: 0px solid;
+    margin-left: 10px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    flex-grow: 1;
+    min-width: 170px;
+}
+
+.search-btn:hover {
+    background: #67cc65e8;
+}
+
+.search-btn:disabled {
+    background: #cbe2cae8;
+    cursor: not-allowed;
+}
+
+.icon {
+    cursor: pointer;
+}
