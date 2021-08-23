@@ -67,7 +67,7 @@
             </div>
             <div
                 style="display: flex; flex-direction: row; flex-wrap: wrap;flex-grow: 1;align-items: center;margin-top: 10px;">
-                <button  style="flex-grow: 1;" class="search-btn" type="submit">Search Flights</button>
+                <button [disabled]="!flightForm.valid"  style="flex-grow: 1;" class="search-btn" type="submit">Search Flights</button>
             </div>
         </div>
     </form>
