@@ -1,10 +1,5 @@
 <div style="display: flex; flex-direction: row;" class="tab">
     <ng-container *ngFor="let tab of tabsData; let i = index">
-        <!-- <div [id]="tab" style="display: flex; justify-content: center; align-items: center; height: 60px; width: 100px; border: 2px solid black;margin: 2px;">
-            <fa-icon [icon]="faCoffee"></fa-icon> 
-            <span>{{ tab }}</span>
-        </div> -->
-        
         <button [id]="tab.id" class="tablinks" (click)="openTab(tab.id)"><fa-icon style="margin-right: 5px;" [icon]="getIcon(i)"></fa-icon>{{tab.name}}</button>
     </ng-container>
 </div>

@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { faArrowLeft, faArrowRight, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FlightsService } from './service/flights.service';
 import * as _ from 'lodash';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-flights',
   templateUrl: './flights.component.html',
   styleUrls: ['./flights.component.css']
 })
-export class FlightsComponent implements OnInit {
+export class FlightsComponent implements OnInit, OnDestroy {
 
   flightForm: any;
   faArrowLeft = faArrowLeft;
@@ -24,6 +26,7 @@ export class FlightsComponent implements OnInit {
   filterByForm: any;
   filterByData: any;
   filterConditions: any = {};
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   sortByData = [
     'Price (Lowest to Highest)',
@@ -64,7 +67,7 @@ export class FlightsComponent implements OnInit {
 
   onSubmit(): void {
     this.flightService.selectedSearchData = this.flightForm.value;
-    this.flightService.getFlightsData(this.flightForm.value).subscribe(data => {
+    this.flightService.getFlightsData(this.flightForm.value).pipe(takeUntil(this.destroy$)).subscribe(data => {
       this.flightSearchData = _.cloneDeep(data);
       this.setFilterByData(data);
       this.showFlightData = true;
@@ -247,5 +250,9 @@ export class FlightsComponent implements OnInit {
 
   onFilterByReset(): void {
     this.filterByForm.reset();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
   }
 }

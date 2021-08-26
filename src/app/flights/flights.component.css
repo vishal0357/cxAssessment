@@ -1,8 +1,133 @@
+.flex-column {
+    display: flex; 
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex; 
+    flex-direction: row;
+}
+
+.flex-row-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.flex-grow-1 {
+    flex-grow: 1
+}
+
+.flex-jcCenter {
+    display: flex; 
+    justify-content: center;
+}
+
+.flex-jcEnd {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header {
+    margin: 5px;
+    background-color: #1976d2; 
+    height: 50px; 
+    color: white;
+}
+
+.arrow-icon {
+    align-items: center; 
+    margin-left: 15px; 
+    margin-top: 15px;
+}
+
+.flight-header-data {
+    align-items: center;
+    margin-top: 7px
+}
+.flight-class {
+    height: 70px; 
+    width: 130px;
+    background-color: #1976d2; 
+    color: white; 
+    border-radius: 10px; 
+    margin: 10px; 
+    padding: 10px;
+}
+
+.seat-left-label {
+    background: #d85d22;
+    padding: 4px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.fixed-btn {
+    position: fixed;
+    bottom: 35px;
+    left: 40vw;
+}
+
+.sort-filter-btn {
+    height: 35px; 
+    width: 100px; 
+    color: #1976d2; 
+    font-weight: bold;
+}
+
+.sortby {
+    flex-wrap: wrap; 
+    margin-top: 10px; 
+    margin-left: 15px;
+}
+
+.price-range-label {
+    font-weight: bold; 
+    margin-left: 10px;
+}
+
+.column-label {
+    margin: 10px; 
+    font-weight: bold;
+}
+
+.filter-section {
+    height: 30px; 
+    margin-left: 10px;
+}
 .form-label {
     top: 10px;
     position: relative;
     left: 20px;
     background-color: white;
+}
+
+.header-label {
+    font-size: 20px; 
+    font-weight: bold; 
+    margin-top: 5px;
+}
+
+.header-center {
+    align-items: center; 
+    margin-top: 7px
+}
+
+.edit-icon-margin {
+    margin-top: 15px; 
+    margin-right: 15px;
+}
+
+.flight-list {
+    border: 1px solid; 
+    margin: 5px; 
+    padding: 10px;
+}
+
+.airline-label {
+    margin-left: 10px;
+    margin-top: 10px; 
+    font-weight: bold;
 }
 
 .form-element {
@@ -17,11 +142,7 @@
     border-radius: 10px;
 }
 
-.option {
-    height: 50px !important;
-    width: 200px !important;
-}
-.margin-10 {
+.input-element {
     margin: 10px;
     display: flex;
     flex-direction: column;

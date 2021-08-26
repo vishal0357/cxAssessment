@@ -1,9 +1,9 @@
-<div style="display: flex; flex-direction: column; width: 65%; margin: auto;">
+<div style="width: 70%; margin: auto;" class="flex-column">
     <!-- SEARCH FORM -->
     <form [formGroup]="flightForm" (ngSubmit)="onSubmit()" *ngIf="showFlightForm">
-        <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap; flex-grow: 1;">
-                <div class="margin-10">
+        <div class="flex-row-wrap">
+            <div class="flex-row-wrap flex-grow-1">
+                <div class="input-element">
                     <span><label class="form-label" for="departure"> Departure<span class="required">*</span>
                         </label></span>
                     <input class="form-element" type="text" id="departure" formControlName="departure"
@@ -12,7 +12,7 @@
                         class="required">Departure is required.</div>
                 </div>
 
-                <div class="margin-10">
+                <div class="input-element">
                     <span><label class="form-label" for="destination"> Destination <span
                                 class="required">*</span></label></span>
                     <input class="form-element" type="text" id="destination" formControlName="destination"
@@ -21,9 +21,9 @@
                         class="required">Destination is required.</div>
                 </div>
             </div>
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap;flex-grow: 1;">
+            <div class="flex-row-wrap flex-grow-1">
 
-                <div class="margin-10">
+                <div class="input-element">
                     <span><label class="form-label" for="departureDate">Departure date <span
                                 class="required">*</span></label></span>
                     <input class="form-element" type="date" id="departureDate" formControlName="departureDate"
@@ -32,7 +32,7 @@
                         class="required">Departure Date is required.</div>
                 </div>
 
-                <div class="margin-10">
+                <div class="input-element">
                     <span><label class="form-label" for="returnDate">Return date <span
                                 class="required">*</span></label></span>
                     <input class="form-element" type="date" id="returnDate" formControlName="returnDate"
@@ -41,9 +41,9 @@
                         class="required">Return Date is required.</div>
                 </div>
             </div>
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap;flex-grow: 1;">
+            <div class="flex-row-wrap flex-grow-1">
 
-                <div class="margin-10">
+                <div class="input-element">
                     <span> <label class="form-label" for="travellers">Travellers <span class="required">*</span>
                         </label></span>
                     <input class="form-element" type="number" id="travellers" formControlName="travellers"
@@ -51,11 +51,11 @@
                     <div *ngIf="!flightForm.controls.travellers?.valid && flightForm.controls.travellers?.errors.required && (flightForm.controls.travellers?.touched || flightForm.controls.travellers?.dirty)"
                         class="required">Travellers count is required.</div>
                 </div>
-                <div class="margin-10">
+                <div class="input-element">
                     <span><label class="form-label" for="flightClass">Class <span
                                 class="required">*</span></label></span>
-                    <select class="form-element" id="flightClass" formControlName="flightClass"
-                        placeholder="Select class">
+                    <select class="form-element" id="flightClass" formControlName="flightClass">
+                        <option value="" disabled selected>Select flight class</option>
                         <option class="option" value="basicEconomy">Basic economy</option>
                         <option class="option" value="mainCabin">Main cabin</option>
                         <option class="option" value="economy">Economy</option>
@@ -65,21 +65,19 @@
                         class="required">Class is required.</div>
                 </div>
             </div>
-            <div
-                style="display: flex; flex-direction: row; flex-wrap: wrap;flex-grow: 1;align-items: center;margin-top: 10px;">
-                <button [disabled]="!flightForm.valid"  style="flex-grow: 1;" class="search-btn" type="submit">Search Flights</button>
+            <div class="flex-row-wrap flex-grow-1" 
+                style="align-items: center;margin-top: 10px;">
+                <button [disabled]="!flightForm.valid" class="search-btn flex-grow-1" type="submit">Search Flights</button>
             </div>
         </div>
     </form>
 
     <!-- HEADER -->
-    <div *ngIf="showSortByUI || showFlightData || showFilterByUI"
-        style="margin: 5px;background-color: #1976d2; height: 50px; display: flex; flex-direction: row; color: white;">
-        <div style="align-items: center; margin-left: 15px; margin-top: 15px;">
+    <div *ngIf="showSortByUI || showFlightData || showFilterByUI" class="flex-row header">
+        <div class="arrow-icon">
             <fa-icon class="icon" (click)="onBackButtonClick()" [icon]="faArrowLeft"></fa-icon>
         </div>
-        <div *ngIf="showFlightData"
-            style="display: flex; flex-direction: column; align-items: center; flex-grow: 1; margin-top: 7px">
+        <div *ngIf="showFlightData" class="flex-column flex-grow-1 flight-header-data">
             <div>
                 <span style="margin-bottom: 2px;">{{flightSearchData.departure}}</span>
                 <fa-icon style="margin: 8px;" [icon]="faArrowRight"></fa-icon>
@@ -90,39 +88,34 @@
                     {{flightSearchData.travellers}} Adults</span>
             </div>
         </div>
-        <div *ngIf="showSortByUI"
-            style="display: flex; flex-direction: column; align-items: center; flex-grow: 1; margin-top: 7px">
-            <span style="font-size: 20px; font-weight: bold; margin-top: 5px;">Sort By</span>
+        <div *ngIf="showSortByUI" class="flex-column flex-grow-1 header-center">
+            <span class="header-label">Sort By</span>
         </div>
 
-        <div *ngIf="showFilterByUI"
-            style="display: flex; flex-direction: column; align-items: center; flex-grow: 1; margin-top: 7px">
-            <span style="font-size: 20px; font-weight: bold; margin-top: 5px;">Filter By</span>
+        <div *ngIf="showFilterByUI" class="flex-column flex-grow-1 header-center">
+            <span class="header-label">Filter By</span>
         </div>
 
-        <div *ngIf="showFlightData" style="margin-top: 15px; margin-right: 15px;">
+        <div *ngIf="showFlightData" class="edit-icon-margin">
             <fa-icon class="icon" (click)="onEditFormClick()" style="margin-right: 5px;" [icon]="faPencilAlt"></fa-icon>
         </div>
     </div>
 
     <!-- FLIGHT LIST  -->
-    <div *ngIf="showFlightData" style="display: flex; flex-direction: column; flex-wrap: wrap;">
+    <div *ngIf="showFlightData" class="flex-column" style="flex-wrap: wrap;">
         <ng-container *ngFor="let flight of flightSearchData.flights">
-            <!-- <ng-container [ngTemplateOutlet]="flightTemplate" 
-			    [ngTemplateOutletContext] ="{flightData: flight}">
-		    </ng-container> -->
-            <div style="display: flex; flex-direction: column; border: 1px solid; margin: 5px; padding: 10px;">
-                <div style="display: flex; flex-direction: row; margin: 5px;">
+            <div class="flex-column flight-list">
+                <div class="flex-row" style=" margin: 5px;">
                     <img [src]="flight.airlineIconUrl" height="40px">
-                    <span style="margin-left: 10px;margin-top: 10px; font-weight: bold;">{{ flight.airlineName }}</span>
+                    <span class="airline-label">{{ flight.airlineName }}</span>
                 </div>
-                <div style="display: flex; flex-direction: row;  margin: 5px;">
-                    <div style="display: flex; flex-direction: column; justify-content: center;">
+                <div class="flex-row" style="margin: 5px;">
+                    <div class="flex-column" style="justify-content: center;">
                         <span style="font-weight: bold;"> {{ flight.startTime }}</span>
                         <span> {{ flight.startLocation }}</span>
                     </div>
-                    <div style="display: flex; justify-content: center; flex-grow: 1;">
-                        <div style="display: flex;flex-direction: column;">
+                    <div class="flex-grow-1 flex-jcCenter">
+                        <div class="flex-column">
                             <span> {{ flight.totalTime }}</span>
                             <span>
                                 <svg height="6" width="100">
@@ -135,24 +128,19 @@
                         </div>
 
                     </div>
-                    <div style="display: flex; flex-direction: row;">
-                        <div style="display: flex; flex-direction: column;justify-content: center;">
+                    <div class="flex-row">
+                        <div class="flex-column" style="justify-content: center;">
                             <span style="font-weight: bold;"> {{ flight.endTime }}</span>
                             <span> {{ flight.endLocation }}</span>
                         </div>
                     </div>
                 </div>
 
-                <div style="display: flex; flex-direction: row; flex-wrap: wrap; margin-top: 10px;">
+                <div class="flex-row-wrap" style=" margin-top: 10px;">
                     <ng-container *ngFor="let class of flight.class">
-                        <div
-                            style="display: flex;flex-direction: column; height: 70px; width: 130px;background-color: #1976d2; color: white; border-radius: 10px; margin: 10px; padding: 10px;">
+                        <div class="flex-column flight-class">
                             <div style="position: relative;left: 50px;bottom: 20px;">
-                                <span style="
-                                background: #d85d22;
-                                padding: 4px;
-                                border-radius: 10px;
-                                font-size: 14px;">{{class.seatsLeft }} Seats left
+                                <span class="seat-left-label">{{class.seatsLeft }} Seats left
                                 </span>
                             </div>
                             <span style="margin-bottom: 2px;">${{ class.price}}</span>
@@ -167,20 +155,19 @@
 
         </ng-container>
 
-        <div *ngIf="flightSearchData.flights.length === 0" style="display: flex; margin-top: 50px; font-weight: bold; color: #e65967; justify-content: center;"><span>No flights with the selected filters found !!!</span></div>
+        <div *ngIf="flightSearchData.flights.length === 0" class="flex-jcCenter" style="margin-top: 50px; font-weight: bold; color: #e65967;"><span>No flights with the selected filters found !!!</span></div>
 
     </div>
 
     <!-- SORT BY / FILER BY BUTTON -->
-    <div *ngIf="showFlightData" style="display: flex;flex-direction: row;position: fixed;bottom: 35px;left: 40vw;">
-        <button (click)="onSortByClick()" style="height: 35px; width: 100px; color: #1976d2; font-weight: bold;">Sort
+    <div *ngIf="showFlightData" class="flex-row fixed-btn">
+        <button (click)="onSortByClick()" class="sort-filter-btn">Sort
             by</button>
-        <button (click)="onFilterByClick()" style="height: 35px; width: 100px; color: #1976d2; font-weight: bold;"> Filter by</button>
+        <button (click)="onFilterByClick()" class="sort-filter-btn"> Filter by</button>
     </div>
 
     <!-- SORT BY SECTION-->
-    <div *ngIf="showSortByUI"
-        style="display: flex; flex-direction: column; flex-wrap: wrap; margin-top: 10px; margin-left: 15px;">
+    <div *ngIf="showSortByUI" class="flex-column sortby">
         <div style="height: 35px;" *ngFor="let sortBy of sortByData; let i=index">
             <input type="radio" name="sortBy" [value]="i" [(ngModel)]="selectedRadio"> {{sortBy}}
         </div>
@@ -191,40 +178,40 @@
 
     <!-- FILTER BY SECTION -->
     <form [formGroup]="filterByForm" *ngIf="showFilterByUI">
-        <div style="display: flex; flex-direction: column; margin: 10px;">
-            <span style="font-weight: bold; margin-left: 10px;">Price range</span>
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
-                <div class="margin-10">
+        <div class="flex-column" style="margin: 10px;">
+            <span class="price-range-label">Price range</span>
+            <div class="flex-row-wrap">
+                <div class="input-element">
                     <span><label class="form-label" for="minimumPrice"> Minimun price
                         </label></span>
                     <input class="form-element" type="number" id="minimumPrice" formControlName="minimumPrice"
                         placeholder="Enter minimum price">
                 </div>
-                <div class="margin-10">
+                <div class="input-element">
                     <span><label class="form-label" for="maximumPrice"> Maximum price
                         </label></span>
                     <input class="form-element" type="number" id="maximumPrice" formControlName="maximumPrice"
                         placeholder="Enter maximum price">
                 </div>
             </div>
-            <div style="display: flex; flex-direction: row;">
-                <div style="margin: 10px; font-weight: bold; flex-grow: 1;"><span>Booking Class</span></div>
-                <div style="margin: 10px; font-weight: bold;flex-grow: 1;display: flex;justify-content: flex-end;"><span>Minimum Price</span></div>
+            <div class="flex-row">
+                <div class="flex-grow-1 column-label"><span>Booking Class</span></div>
+                <div class="flex-grow-1 column-label" class="flex-jcEnd"><span>Minimum Price</span></div>
             </div>
 
             <ng-container *ngFor="let data of filterByData">
-                <div style="display: flex; flex-direction: row; height: 30px; margin-left: 10px;">
-                    <div style="flex-grow: 1;" *ngIf="data.count !== 0"><input type="checkbox"
+                <div class="flex-row filter-section">
+                    <div class="flex-grow-1" *ngIf="data.count !== 0"><input type="checkbox"
                             [formControlName]="data.controlName"><span> {{ data.type }} ({{ data.count}}) </span></div>
-                    <div style="flex-grow: 1; display: flex;justify-content: flex-end; margin-right: 50px;"> <span>${{data.minimumPrice}}</span></div>
+                    <div class="flex-grow-1 flex-jcEnd" style="margin-right: 50px;"> <span>${{data.minimumPrice}}</span></div>
 
                 </div>
             </ng-container>
 
-            <div style="display: flex; flex-direction: row; flex-wrap: wrap;">
-                <button (click)="onFilterByReset()" style="flex-grow: 1;" class="filter-reset-btn" type="submit">Reset
+            <div class="flex-row-wrap">
+                <button (click)="onFilterByReset()"  class="filter-reset-btn flex-grow-1" type="submit">Reset
                     all</button>
-                <button (click)="onFilterBySubmit()" style="flex-grow: 1; margin-top: 5px;" class="filter-apply-btn"
+                <button (click)="onFilterBySubmit()" style="margin-top: 5px;" class="filter-apply-btn flex-grow-1"
                     type="submit">Apply</button>
             </div>
         </div>
